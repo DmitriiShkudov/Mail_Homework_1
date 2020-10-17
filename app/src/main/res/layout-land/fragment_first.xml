@@ -16,9 +16,8 @@
 
         <TextView
             android:textSize="@dimen/default_text_size"
-            android:layout_gravity="start|center"
             android:id="@+id/header_first_fragment"
-            android:layout_marginStart="@dimen/light_margin"
+            android:layout_margin="@dimen/light_margin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/first_fragment_header">
