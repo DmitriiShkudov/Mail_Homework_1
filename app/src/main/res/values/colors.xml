@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#000000</color>
+    <color name="blue">#124CDF</color>
+    <color name="red">#CC1D1D</color>
+    <color name="main_background">#ADFAEA</color>
+    <color name="orange">#FF9800</color>
+    <color name="gradient_color_1">#E433D1AD</color>
+    <color name="gradient_color_2">#CBA2CA11</color>
+    <color name="transparent_color">#00000000</color>
+    <color name="btn_add_color">#6D47BAF1</color>
+    <color name="btn_add_color_pressed">#6D1D688C</color>
+</resources>

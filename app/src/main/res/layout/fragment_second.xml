@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.FirstFragment">
+
+    <TextView
+        android:textSize="@dimen/default_text_size"
+        android:layout_margin="@dimen/light_margin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/second_fragment_header">
+    </TextView>
+
+    <TextView
+        android:id="@+id/tvSelectedNum"
+        android:layout_gravity="center"
+        android:textSize="@dimen/sec_fragment_text_size"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    </TextView>
+
+</FrameLayout>

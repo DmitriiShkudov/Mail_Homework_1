@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context=".fragments.SecondFragment">
+
+    <FrameLayout
+        android:layout_weight="1"
+        android:layout_height="0dp"
+        android:layout_width="match_parent">
+
+        <TextView
+            android:textSize="@dimen/default_text_size"
+            android:id="@+id/header_first_fragment"
+            android:layout_margin="@dimen/light_margin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/first_fragment_header">
+        </TextView>
+
+        <Button
+            android:id="@+id/btn_add"
+            android:textSize="@dimen/default_text_size"
+            android:layout_marginEnd="@dimen/light_margin"
+            android:layout_gravity="end|center"
+            android:layout_marginVertical="@dimen/light_margin"
+            android:background="@drawable/btn_background"
+            android:textAllCaps="false"
+            android:text="@string/btn_add_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        </Button>
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:background="@color/black"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/visual_transition">
+    </FrameLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_weight="12"
+        android:id="@+id/recycler"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+    </androidx.recyclerview.widget.RecyclerView>
+
+</LinearLayout>
