@@ -38,10 +38,10 @@ class FirstFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         // адаптер
-        val rvAdapter = RvAdapter(activity!!)
+        val rvAdapter = RvAdapter(requireActivity())
 
         // присваивание адаптера и менеджера
-        recycler.apply {
+        with(recycler) {
 
             adapter = rvAdapter
 
