@@ -1,20 +1,12 @@
 package com.example.mail_course_hw_1.activities
 
-import android.icu.number.IntegerWidth
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.PersistableBundle
-import android.util.DisplayMetrics
-import android.util.Log
-import android.widget.Toast
 import com.example.mail_course_hw_1.R
 import com.example.mail_course_hw_1.fragments.FirstFragment
-import com.example.mail_course_hw_1.fragments.SecondFragment
-import com.example.mail_course_hw_1.num_handler.NumHandler
 import com.example.mail_course_hw_1.num_handler.NumHandler.init
 import com.example.mail_course_hw_1.num_handler.NumHandler.list
 import com.example.mail_course_hw_1.num_handler.NumHandler.selectedItem
-import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -63,7 +55,6 @@ class MainActivity : AppCompatActivity() {
 
 
     }
-
 
 
 }

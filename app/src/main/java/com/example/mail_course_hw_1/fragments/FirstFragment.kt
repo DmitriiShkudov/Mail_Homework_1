@@ -2,20 +2,17 @@ package com.example.mail_course_hw_1.fragments
 
 import android.content.res.Configuration
 import android.os.Bundle
-import android.util.DisplayMetrics
-import android.util.Log
 import android.view.*
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.mail_course_hw_1.num_handler.OnNumberSelectListener
 import com.example.mail_course_hw_1.R
 import com.example.mail_course_hw_1.num_handler.NumHandler
 import com.example.mail_course_hw_1.num_handler.NumHandler.add
-import com.example.mail_course_hw_1.num_handler.NumHandler.init
 import com.example.mail_course_hw_1.num_handler.NumHandler.list
+import com.example.mail_course_hw_1.num_handler.NumHandler.selectedItem
 import com.example.mail_course_hw_1.rv_adapter.RvAdapter
 import kotlinx.android.synthetic.main.fragment_first.*
-import java.util.*
 
 
 class FirstFragment : Fragment() {
@@ -28,6 +25,24 @@ class FirstFragment : Fragment() {
 
     }
 
+    private val onNumberSelectListener = object : OnNumberSelectListener {
+
+        override fun onNumberSelect(num: Int) {
+
+            // присвоение ссылке выбранного числа
+            selectedItem = num
+
+            // открываем второй фрагмент
+            with(requireActivity().supportFragmentManager.beginTransaction()) {
+
+                replace(R.id.main_layout, SecondFragment())
+                addToBackStack(null)
+                commit()
+
+            }
+
+        }
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) =
         inflater.inflate(R.layout.fragment_first, container, false)
@@ -38,7 +53,7 @@ class FirstFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         // адаптер
-        val rvAdapter = RvAdapter(requireActivity())
+        val rvAdapter = RvAdapter(onNumberSelectListener)
 
         // присваивание адаптера и менеджера
         with(recycler) {
