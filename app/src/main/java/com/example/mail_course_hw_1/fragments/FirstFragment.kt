@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.mail_course_hw_1.num_handler.OnNumberSelectListener
 import com.example.mail_course_hw_1.R
 import com.example.mail_course_hw_1.num_handler.NumHandler
@@ -25,25 +26,6 @@ class FirstFragment : Fragment() {
 
     }
 
-    private val onNumberSelectListener = object : OnNumberSelectListener {
-
-        override fun onNumberSelect(num: Int) {
-
-            // присвоение ссылке выбранного числа
-            selectedItem = num
-
-            // открываем второй фрагмент
-            with(requireActivity().supportFragmentManager.beginTransaction()) {
-
-                replace(R.id.main_layout, SecondFragment())
-                addToBackStack(null)
-                commit()
-
-            }
-
-        }
-    }
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) =
         inflater.inflate(R.layout.fragment_first, container, false)
 
@@ -53,15 +35,17 @@ class FirstFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         // адаптер
-        val rvAdapter = RvAdapter(onNumberSelectListener)
+        val rvAdapter = RvAdapter()
 
-        // присваивание адаптера и менеджера
+        // присваивание адаптера, менеджера и обработчика нажатий
         with(recycler) {
 
             adapter = rvAdapter
 
             // устанавливаем кол-во столбцов в зависимости от ориентации
             layoutManager = GridLayoutManager(context, getSpanAmount())
+
+            setOnNumberSelectListener()
 
         }
 
@@ -81,6 +65,24 @@ class FirstFragment : Fragment() {
         else -> SPAN_AMOUNT
 
     }
+
+    private fun RecyclerView.setOnNumberSelectListener() =
+
+        (this.adapter as RvAdapter).setOnNumberSelectListener { num ->
+
+            // присвоение ссылке выбранного числа
+            selectedItem = num
+
+            // открываем второй фрагмент
+            with(requireActivity().supportFragmentManager.beginTransaction()) {
+
+                replace(R.id.main_layout, SecondFragment())
+                addToBackStack(null)
+                commit()
+
+            }
+
+        }
 
 
 }

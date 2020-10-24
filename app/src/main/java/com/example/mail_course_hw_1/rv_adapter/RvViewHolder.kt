@@ -7,8 +7,9 @@ import com.example.mail_course_hw_1.num_handler.OnNumberSelectListener
 import com.example.mail_course_hw_1.R
 import com.example.mail_course_hw_1.num_handler.NumHandler.setColor
 import kotlinx.android.synthetic.main.recycler_item.view.*
+import java.lang.Exception
 
-class RvViewHolder(private val onNumberSelectListener: OnNumberSelectListener, inflater: LayoutInflater, parent: ViewGroup) :
+class RvViewHolder(private val onNumberSelectListener: OnNumberSelectListener?, inflater: LayoutInflater, parent: ViewGroup) :
     RecyclerView.ViewHolder(inflater.inflate(R.layout.recycler_item, parent, false)) {
 
     // TextView, отображающее число
@@ -27,12 +28,15 @@ class RvViewHolder(private val onNumberSelectListener: OnNumberSelectListener, i
             // обработка нажатия
             setOnClickListener {
 
-                onNumberSelectListener.onNumberSelect(element)
+                onNumberSelectListener?.onNumberSelect(element) ?:
+                    throw Exception("Listener wasn't attach")
 
             }
 
         }
 
     }
+
+
 
 }
