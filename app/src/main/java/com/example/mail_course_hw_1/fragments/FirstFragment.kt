@@ -2,11 +2,12 @@ package com.example.mail_course_hw_1.fragments
 
 import android.content.res.Configuration
 import android.os.Bundle
+import android.util.Log
 import android.view.*
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.mail_course_hw_1.num_handler.OnNumberSelectListener
 import com.example.mail_course_hw_1.R
 import com.example.mail_course_hw_1.num_handler.NumHandler
 import com.example.mail_course_hw_1.num_handler.NumHandler.add
@@ -35,17 +36,31 @@ class FirstFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         // адаптер
-        val rvAdapter = RvAdapter()
+        val rvAdapter = RvAdapter().apply {
 
-        // присваивание адаптера, менеджера и обработчика нажатий
+            setOnNumberSelectAction { num ->
+
+                // присваивание ссылке выбранного числа
+                selectedItem = num
+
+                // открываем второй фрагмент
+                with(requireActivity().supportFragmentManager.beginTransaction()) {
+
+                    replace(R.id.main_layout, SecondFragment())
+                    addToBackStack(null)
+                    commit()
+
+                }
+            }
+        }
+
+        // присваивание адаптера и менеджера
         with(recycler) {
 
             adapter = rvAdapter
 
             // устанавливаем кол-во столбцов в зависимости от ориентации
             layoutManager = GridLayoutManager(context, getSpanAmount())
-
-            setOnNumberSelectListener()
 
         }
 
@@ -56,8 +71,8 @@ class FirstFragment : Fragment() {
             rvAdapter.notifyDataSetChanged()
 
         }
-
     }
+
 
     private fun getSpanAmount() = when (resources.configuration.orientation) {
 
@@ -65,24 +80,6 @@ class FirstFragment : Fragment() {
         else -> SPAN_AMOUNT
 
     }
-
-    private fun RecyclerView.setOnNumberSelectListener() =
-
-        (this.adapter as RvAdapter).setOnNumberSelectListener { num ->
-
-            // присвоение ссылке выбранного числа
-            selectedItem = num
-
-            // открываем второй фрагмент
-            with(requireActivity().supportFragmentManager.beginTransaction()) {
-
-                replace(R.id.main_layout, SecondFragment())
-                addToBackStack(null)
-                commit()
-
-            }
-
-        }
 
 
 }
