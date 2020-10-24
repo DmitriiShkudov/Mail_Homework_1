@@ -18,6 +18,9 @@ object NumHandler {
     // инициализация списка по умолчанию
     fun LinkedList<Int>.init() = (1..DEFAULT_NUM_AMOUNT).forEach { this.add(it) }
 
+    // инициализация списка по умолчанию
+    fun LinkedList<Int>.init(size: Int) = (1..size).forEach { this.add(it) }
+
     // добавление следующего числа
     fun LinkedList<Int>.add() = this.add(this.last + 1)
 

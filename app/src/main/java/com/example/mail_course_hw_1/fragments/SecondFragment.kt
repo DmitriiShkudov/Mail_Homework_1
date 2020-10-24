@@ -18,12 +18,13 @@ class SecondFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) =
         inflater.inflate(R.layout.fragment_second, container, false)
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // показываю выбранное число
-        tvSelectedNum.setColor(selectedItem)
+        // присваиваю
         tvSelectedNum.text = selectedItem.toString()
+        tvSelectedNum.setColor(selectedItem)
 
     }
 }

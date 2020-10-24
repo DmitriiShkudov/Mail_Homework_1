@@ -40,4 +40,8 @@
         60sp
     </dimen>
 
+    <dimen name="top_size">
+        75dp
+    </dimen>
+
 </resources>
