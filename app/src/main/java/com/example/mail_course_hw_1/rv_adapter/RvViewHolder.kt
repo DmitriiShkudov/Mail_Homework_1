@@ -26,7 +26,7 @@ class RvViewHolder(private val onNumberSelectAction: (Int) -> Unit, inflater: La
 
             // обработка нажатия
             setOnClickListener {
-                
+
                 onNumberSelectAction.invoke(element)
 
             }

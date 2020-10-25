@@ -5,11 +5,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mail_course_hw_1.num_handler.NumHandler.list
 
-class RvAdapter()
+class RvAdapter(private val onNumberSelectAction: (num: Int) -> Unit)
     : RecyclerView.Adapter<RvViewHolder>() {
 
     // обработчик выбора элемента
-    private var onNumberSelectAction: (num: Int) -> Unit = {}
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         RvViewHolder(onNumberSelectAction, LayoutInflater.from(parent.context), parent)
@@ -19,9 +18,9 @@ class RvAdapter()
 
     override fun getItemCount() = list.size
 
-    fun setOnNumberSelectAction(onNumberSelect: (num: Int) -> Unit) {
+    /*fun setOnNumberSelectAction(onNumberSelect: (num: Int) -> Unit) {
         onNumberSelectAction = onNumberSelect
-    }
+    }*/
 
 
 }

@@ -36,23 +36,7 @@ class FirstFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         // адаптер
-        val rvAdapter = RvAdapter().apply {
-
-            setOnNumberSelectAction { num ->
-
-                // присваивание ссылке выбранного числа
-                selectedItem = num
-
-                // открываем второй фрагмент
-                with(requireActivity().supportFragmentManager.beginTransaction()) {
-
-                    replace(R.id.main_layout, SecondFragment())
-                    addToBackStack(null)
-                    commit()
-
-                }
-            }
-        }
+        val rvAdapter = RvAdapter(::onNumberSelectAction)
 
         // присваивание адаптера и менеджера
         with(recycler) {
@@ -78,6 +62,22 @@ class FirstFragment : Fragment() {
 
         Configuration.ORIENTATION_LANDSCAPE -> LANDSCAPE_SPAN_AMOUNT
         else -> SPAN_AMOUNT
+
+    }
+
+    private fun onNumberSelectAction(num: Int) {
+
+        // присваивание ссылке выбранного числа
+        selectedItem = num
+
+        // открываем второй фрагмент
+        with(requireActivity().supportFragmentManager.beginTransaction()) {
+
+            replace(R.id.main_layout, SecondFragment())
+            addToBackStack(null)
+            commit()
+
+        }
 
     }
 
