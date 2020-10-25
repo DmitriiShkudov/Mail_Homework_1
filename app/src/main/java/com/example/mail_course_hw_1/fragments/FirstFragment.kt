@@ -57,7 +57,6 @@ class FirstFragment : Fragment() {
         }
     }
 
-
     private fun getSpanAmount() = when (resources.configuration.orientation) {
 
         Configuration.ORIENTATION_LANDSCAPE -> LANDSCAPE_SPAN_AMOUNT
@@ -80,6 +79,5 @@ class FirstFragment : Fragment() {
         }
 
     }
-
 
 }
