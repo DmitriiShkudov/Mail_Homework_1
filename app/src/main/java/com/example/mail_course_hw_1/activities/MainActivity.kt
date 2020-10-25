@@ -16,6 +16,7 @@ class MainActivity : AppCompatActivity() {
 
         const val KEY_SELECTED_ITEM = "ITEM"
         const val KEY_SIZE = "SIZE"
+        const val DEFAULT_NUM_AMOUNT = 100
 
     }
 
@@ -42,7 +43,7 @@ class MainActivity : AppCompatActivity() {
 
             // по умолчанию заполняем лист от 1 до 100 и открываем фрагмент
             null -> {
-                list.init()
+                list.init(DEFAULT_NUM_AMOUNT)
                 supportFragmentManager.beginTransaction().add(R.id.main_layout, FirstFragment()).commit()
             }
 

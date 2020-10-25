@@ -8,8 +8,6 @@ import com.example.mail_course_hw_1.num_handler.NumHandler.list
 class RvAdapter(private val onNumberSelectAction: (num: Int) -> Unit)
     : RecyclerView.Adapter<RvViewHolder>() {
 
-    // обработчик выбора элемента
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         RvViewHolder(onNumberSelectAction, LayoutInflater.from(parent.context), parent)
 
@@ -17,10 +15,5 @@ class RvAdapter(private val onNumberSelectAction: (num: Int) -> Unit)
         holder.bind(list[position])
 
     override fun getItemCount() = list.size
-
-    /*fun setOnNumberSelectAction(onNumberSelect: (num: Int) -> Unit) {
-        onNumberSelectAction = onNumberSelect
-    }*/
-
 
 }
