@@ -3,9 +3,10 @@ package com.example.mail_course_hw_1.rv_adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.mail_course_hw_1.num_handler.NumHandler.list
+import java.util.*
 
-class RvAdapter(private val onNumberSelectAction: (num: Int) -> Unit)
+class RvAdapter(private val list: LinkedList<Int>,
+                private val onNumberSelectAction: (num: Int) -> Unit)
     : RecyclerView.Adapter<RvViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =

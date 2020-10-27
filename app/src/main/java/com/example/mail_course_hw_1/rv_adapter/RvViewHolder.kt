@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mail_course_hw_1.R
-import com.example.mail_course_hw_1.num_handler.NumHandler.setColor
+import com.example.mail_course_hw_1.activities.MainActivity.Companion.setColor
 import kotlinx.android.synthetic.main.recycler_item.view.*
 import java.lang.Exception
 

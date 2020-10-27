@@ -2,34 +2,28 @@ package com.example.mail_course_hw_1.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.TextView
 import android.widget.Toast
+import androidx.core.content.res.ResourcesCompat
 import com.example.mail_course_hw_1.R
 import com.example.mail_course_hw_1.fragments.FirstFragment
-import com.example.mail_course_hw_1.num_handler.NumHandler.init
-import com.example.mail_course_hw_1.num_handler.NumHandler.list
-import com.example.mail_course_hw_1.num_handler.NumHandler.selectedItem
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
-    // константы
-    private companion object {
+    // хелпер-методы
+    companion object {
 
-        const val KEY_SELECTED_ITEM = "ITEM"
-        const val KEY_SIZE = "SIZE"
-        const val DEFAULT_NUM_AMOUNT = 100
+        // установка цвета в соотв. с заданием
+        fun TextView.setColor(num: Int) =
+            this.setTextColor(
+                ResourcesCompat.getColor(resources,
+                if (num.isOdd) R.color.blue else R.color.red,
+                null))
 
-    }
-
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-
-        // перед onStop запоминаем размер списка и выбранный элемент
-
-        outState.putInt(KEY_SIZE, list.size)
-        outState.putInt(KEY_SELECTED_ITEM, selectedItem)
-
-        // очищаем лист, т.к ссылаемся на тот же лист и при иниц. от 1 до n будет 2n элементов
-        list.clear()
+        // нечетное ли число
+        val Int.isOdd
+            get() = this % 2 == 1
 
     }
 
@@ -38,21 +32,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        when (savedInstanceState) {
-
-            // по умолчанию заполняем лист от 1 до 100 и открываем фрагмент
-            null -> {
-                list.init(DEFAULT_NUM_AMOUNT)
-                supportFragmentManager.beginTransaction().add(R.id.main_layout, FirstFragment()).commit()
+        if (savedInstanceState == null)
+            with (supportFragmentManager.beginTransaction()) {
+                add(R.id.main_layout, FirstFragment().also { it.arguments = Bundle() })
+                commit()
             }
-
-            // в сохр. состоянии заполняем лист и выбранное число до сохраненных значений
-            else -> {
-                list.init(savedInstanceState.getInt(KEY_SIZE))
-                selectedItem = savedInstanceState.getInt(KEY_SELECTED_ITEM)
-            }
-
-        }
 
     }
 
