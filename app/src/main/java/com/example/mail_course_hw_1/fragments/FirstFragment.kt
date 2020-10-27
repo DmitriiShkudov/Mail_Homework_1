@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mail_course_hw_1.R
 import com.example.mail_course_hw_1.fragments.SecondFragment.Companion.KEY_SELECTED_ITEM
-import com.example.mail_course_hw_1.num_handler.NumHandler
 import com.example.mail_course_hw_1.rv_adapter.RvAdapter
 import kotlinx.android.synthetic.main.fragment_first.*
 import java.util.*
